@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+:root {
+  --foreground-rgb: 40, 40, 40; 
+  --background-start-rgb: 240, 240, 240; 
+  --background-end-rgb: 255, 255, 255; 
+}
+
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+}
+
+a {
+  color: rgb(var(--foreground-rgb));
+  transition: color 0.3s; 
+}
+
+a:hover {
+  color: rgb(0, 0, 255); 
+}
+
+
+input, textarea {
+  color: rgb(0, 0, 0); 
+  background-color: rgb(217, 217, 217); 
+  border: 1px solid rgb(200, 200, 200); 
+  padding: 0.5rem; 
+  border-radius: 0.375rem; 
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid #6c6c6c; 
+  background-color: rgb(249, 249, 249); 
+}
+
+
+
+
+label {
+  color: rgb(var(--foreground-rgb)); 
+}
+
+
+.review-card {
+  background-color: rgb(245, 245, 245); 
+  border: 1px solid rgb(200, 200, 200); 
+  padding: 1rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.review-card .name {
+  color: rgb(60, 60, 60); 
+  font-weight: bold; 
+}
+
+.review-card .comment {
+  color: rgb(40, 40, 40); 
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: rgb(var(--foreground-rgb));
+}
+
+h1.dark, h2.dark, h3.dark, h4.dark, h5.dark, h6.dark {
+  color: rgb(255, 255, 255);
+}
