@@ -22,7 +22,7 @@ interface ApiResponse<T> {
     content: T[];
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://feira.mateuslh.com/api/feiras";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://feira.mateuslh.com";
 
 export const fetchPublicFeiras = async (): Promise<Feira[]> => { 
     try {
