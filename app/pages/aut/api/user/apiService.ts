@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || 'http://feira.mateuslh.com/api'; 
+const API_URL = process.env.NEXT_APP_API_URL || 'http://feira.mateuslh.com/api'; 
 
 const getToken = () => {
     const name = 'token=';
