@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://feira.mateuslh.com/api';
+const API_URL = process.env.NEXT_PUBLIC_SWAGGER_URL|| 'http://feira.mateuslh.com/api';
 
 export const saveToken = (token: string) => {
   document.cookie = `token=${token}; path=/; samesite=strict;`;
