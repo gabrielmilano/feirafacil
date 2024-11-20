@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://feira.mateuslh.com/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://feira.mateuslh.com/api';
 
 // Função para obter o token armazenado nos cookies
 const getToken = () => {
