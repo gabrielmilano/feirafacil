@@ -32,7 +32,7 @@ export default function Login() {
         <h1 className="text-3xl font-bold mb-4 text-center text-black-600">Login</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="user" className="block text-gray-700">Usuário</label>
+            <label htmlFor="usuario" className="block text-gray-700">Usuário</label>
             <input
               id="usuario"
               type="text"
@@ -43,7 +43,7 @@ export default function Login() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700">Senha</label>
+            <label htmlFor="senha" className="block text-gray-700">Senha</label>
             <input
               id="senha"
               type="password"
