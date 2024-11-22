@@ -9,6 +9,7 @@ Bem-vindo ao projeto de **Sistema de Feiras de Comércio Justo**, uma plataforma
 - Paulo Francisconi: Gerenciamento de projeto
 - Matheus Leal: Backend
 
+
 ## Professor
 
 - Ramon Venson
