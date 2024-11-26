@@ -90,7 +90,7 @@ const ModalAdicionarFeira: React.FC<ModalAdicionarFeiraProps> = ({ isOpen, onClo
                     </button>
                     <button
                         onClick={handleSubmit}
-                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                        className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
                     >
                         {feira ? 'Atualizar Feira' : 'Adicionar Feira'}
                     </button>
