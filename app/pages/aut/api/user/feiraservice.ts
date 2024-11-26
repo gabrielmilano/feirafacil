@@ -39,7 +39,7 @@ export const updateFeira = async (
     updatedData: { nome: string; local: string; descricao: string }
   ) => {
     try {
-      const updatedFeira = await authenticatedFetch(`/feiras/feira/${id}`, {
+      const updatedFeira = await authenticatedFetch(`/feiras/feira/`, {
         method: 'PUT',
         body: JSON.stringify({
           id, 
