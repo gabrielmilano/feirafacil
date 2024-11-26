@@ -9,7 +9,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-blue-600 text-white p-4">
+    <header className="bg-gray-600 text-white p-4">
       <nav className="flex justify-between items-center">
         <ul className="flex space-x-4">
           <li><Link href="/pages/aut/homeLogado">Home</Link></li>
@@ -19,7 +19,7 @@ export default function Header() {
         </ul>
         <button 
           onClick={handleLogout}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
         >
           Logout
         </button>
