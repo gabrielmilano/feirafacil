@@ -52,7 +52,7 @@ function Home() {
 
         {/* Seção abaixo dos cards */}
         <div className="text-center mb-12 px-4">
-          <p className="text-lg text-gray-700 mb-4">
+          <p className="text-base text-gray-700 mb-4 text-left">
             Aqui você pode gerenciar feirantes, feiras e eventos de forma rápida e eficiente. Acesse as seções acima para realizar todas as suas atividades administrativas, como adicionar feirantes, criar novas feiras e editar os eventos das respectivas feiras.
           </p>
           <div className="flex justify-center">
