@@ -52,7 +52,7 @@ const FeirasPage = () => {
         }
     };
 
-    const handleModalSubmit = async (data: { nome: string; local: string; descricao: string }) => {
+    const handleModalSubmit = async (data: any) => {
         if (editingFeira) {
             // Atualiza a feira existente
             await updateFeira(editingFeira.id, data);
