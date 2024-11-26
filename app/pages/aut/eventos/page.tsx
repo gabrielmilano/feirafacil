@@ -114,7 +114,7 @@ const EventosPage = () => {
                 </select>
                 <button
                     onClick={() => selectedFeira && console.log(`Feira ${selectedFeira.nome} selecionada`)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="bg-[#4b5563] text-white px-4 py-2 rounded hover:bg-[#6b7280]"
                 >
                     Selecionar Feira
                 </button>
