@@ -67,13 +67,14 @@ export default function Home() {
                     <img
                         src="/banners/logo.png"
                         alt="Logo da Feira Fácil"
-                        className="w-40 sm:w-56 md:w-72 lg:w-96 h-auto"
+                        className="h-auto max-w-[90%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%]"
                     />
                     <p className="mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-2xl">
                         Conecte-se com produtores locais e descubra feiras próximas de você!
                     </p>
                 </div>
             </header>
+
 
 
 
