@@ -41,7 +41,6 @@ export const updateFeira = async (
       local: string;
       descricao: string;
       data: string;
-      imagemId: number; // Adicionado para atender à API
     }
   ) => {
     try {
