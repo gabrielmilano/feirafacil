@@ -43,7 +43,7 @@ export const updateFeira = async (
         method: 'PUT',
         body: JSON.stringify({
           id, 
-          ...updatedData, // Adiciona os demais dados da feira
+          ...updatedData, 
         }),
       });
       return updatedFeira;
