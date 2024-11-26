@@ -74,6 +74,8 @@ export default function Home() {
                     </p>
                 </div>
             </header>
+        </div>
+
 
 
 
