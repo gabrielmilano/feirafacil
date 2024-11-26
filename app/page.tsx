@@ -62,17 +62,19 @@ export default function Home() {
 
     return (
         <div>
-            <Header />
-            <div className="flex flex-col min-h-screen">
-                <div className="container mx-auto px-4 py-8">
-                    <header className="text-center mb-8">
-                        <img
-                            src="/banners/logo.png"
-                            alt="Logo da Feira Fácil"
-                            className="mx-auto w-32 sm:w-48 md:w-64 lg:w-72 h-auto"
-                        />
-                        <p className="mt-4 text-gray-600">Conecte-se com produtores locais e descubra feiras próximas de você!</p>
-                    </header>
+            <header className="text-center mb-12">
+                <div className="flex flex-col items-center">
+                    <img
+                        src="/banners/logo.png"
+                        alt="Logo da Feira Fácil"
+                        className="w-40 sm:w-56 md:w-72 lg:w-96 h-auto"
+                    />
+                    <p className="mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-2xl">
+                        Conecte-se com produtores locais e descubra feiras próximas de você!
+                    </p>
+                </div>
+            </header>
+
 
 
                     <section className="mb-8">
