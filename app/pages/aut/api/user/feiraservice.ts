@@ -34,15 +34,21 @@ export const deleteFeira = async (id: number) => {
     }
 };
 
-export const updateFeira = async (id: number, updatedData: { id: string; nome: string; local: string; descricao: string }) => {
+export const updateFeira = async (
+    id: number,
+    updatedData: { nome: string; local: string; descricao: string }
+  ) => {
     try {
-        const updatedFeira = await authenticatedFetch(`/feiras/feira/${id}`, {
-            method: 'PUT',
-            body: JSON.stringify(updatedData),
-        });
-        return updatedFeira;
+      const updatedFeira = await authenticatedFetch(`/feiras/feira/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id, 
+          ...updatedData, // Adiciona os demais dados da feira
+        }),
+      });
+      return updatedFeira;
     } catch (error) {
-        console.error('Erro ao atualizar a feira:', error);
-        throw error;
+      console.error('Erro ao atualizar a feira:', error);
+      throw error;
     }
-};
+  };
