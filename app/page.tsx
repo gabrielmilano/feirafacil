@@ -61,20 +61,22 @@ export default function Home() {
     };
 
     return (
-        <div>
-            <header className="text-center mb-12">
-                <div className="flex flex-col items-center">
-                    <img
-                        src="/banners/logo.png"
-                        alt="Logo da Feira Fácil"
-                        className="w-40 sm:w-56 md:w-72 lg:w-96 h-auto"
-                    />
-                    <p className="mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-2xl">
-                        Conecte-se com produtores locais e descubra feiras próximas de você!
-                    </p>
+            <>
+                <div>
+                    <header className="text-center mb-12">
+                        <div className="flex flex-col items-center">
+                            <img
+                                src="/banners/logo.png"
+                                alt="Logo da Feira Fácil"
+                                className="w-40 sm:w-56 md:w-72 lg:w-96 h-auto"
+                            />
+                            <p className="mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-2xl">
+                                Conecte-se com produtores locais e descubra feiras próximas de você!
+                            </p>
+                        </div>
+                    </header>
                 </div>
-            </header>
-        </div>
+            </>
 
 
 
