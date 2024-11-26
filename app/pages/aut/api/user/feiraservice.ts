@@ -36,7 +36,7 @@ export const deleteFeira = async (id: number) => {
 
 export const updateFeira = async (
     id: number,
-    updatedData: { nome: string; local: string; descricao: string;  data: "2024-11-26T23:23:00.939Z"; }
+    updatedData: { nome: string; local: string; descricao: string;  data: string; }
   ) => {
     try {
       const updatedFeira = await authenticatedFetch(`/feiras/feira`, {
