@@ -6,7 +6,7 @@ import withAuth from '../../../hoc/withAuth';
 function Home() {
   return (
       <div className="flex flex-col min-h-screen bg-gray-50">
-      <header className="text-white py-4 text-center">
+      <header>
         <h1 className="text-4xl font-bold">Portal do Administrador</h1>
         <p className="mt-2">Bem-vindo de volta!</p>
       </header>
