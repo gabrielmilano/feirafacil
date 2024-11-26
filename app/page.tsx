@@ -66,9 +66,14 @@ export default function Home() {
             <div className="flex flex-col min-h-screen">
                 <div className="container mx-auto px-4 py-8">
                     <header className="text-center mb-8">
-                        <h1 className="text-4xl font-bold text-gray-600">Hub das feiras de Criciúma</h1>
+                        <img
+                            src="/banners/logo.png"
+                            alt="Logo da Feira Fácil"
+                            className="mx-auto w-48 h-auto"
+                        />
                         <p className="mt-4 text-gray-600">Conecte-se com produtores locais e descubra feiras próximas de você!</p>
                     </header>
+
 
                     <section className="mb-8">
                         <BannerCarousel
