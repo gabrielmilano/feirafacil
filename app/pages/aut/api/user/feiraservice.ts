@@ -36,14 +36,23 @@ export const deleteFeira = async (id: number) => {
 
 export const updateFeira = async (
     id: number,
-    updatedData: { nome: string; local: string; descricao: string;  data: string; }
+    updatedData: {
+      nome: string;
+      local: string;
+      descricao: string;
+      data: string;
+      imagemId: number; // Adicionado para atender à API
+    }
   ) => {
     try {
       const updatedFeira = await authenticatedFetch(`/feiras/feira`, {
         method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json', // Adicionado para garantir o tipo correto
+        },
         body: JSON.stringify({
-          id, 
-          ...updatedData, 
+          id, // Inclui o id como parte do payload
+          ...updatedData, // Inclui os outros campos
         }),
       });
       return updatedFeira;
@@ -52,3 +61,4 @@ export const updateFeira = async (
       throw error;
     }
   };
+  
