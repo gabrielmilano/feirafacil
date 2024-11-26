@@ -66,9 +66,26 @@ function Home() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-
-            
           </div>
+
+          {/* Seção abaixo do vídeo 1 */}
+        <div className="text-center mb-12 px-4">
+          <p className="text-sm text-gray-700 mb-4 max-w-4xl mx-auto">
+            Estamos sempre atualizando e melhorando a experiência do administrador. Caso tenha alguma dúvida ou sugestão, entre em contato conosco! Fizemos esses vídeos para mostrar o básico das nossas funcionalidades, mas estamos sempre dispostos a ajudar!
+          </p>
+          <div className="flex justify-center">
+            {/* Espaço para o vídeo do YouTube */}
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/arxlQTqLURg"  // Substitua pelo link do vídeo
+              title="Vídeo explicativo"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+
         </div>
       </main>
     </div>
