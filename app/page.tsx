@@ -76,14 +76,29 @@ export default function Home() {
 
 
                     <section className="mb-8">
+                    {/* Banners para desktop */}
+                    <div className="hidden md:block">
                         <BannerCarousel
-                            banners={[
-                                { id: '1', imageUrl: '/banners/banner1.png', altText: 'Banner 1' },
-                                { id: '2', imageUrl: '/banners/banner2.png', altText: 'Banner 2' },
-                                { id: '3', imageUrl: '/banners/banner3.png', altText: 'Banner 3' }
-                            ]}
+                        banners={[
+                            { id: '1', imageUrl: '/banners/desktop1.png', altText: 'Banner Desktop 1' },
+                            { id: '2', imageUrl: '/banners/desktop2.png', altText: 'Banner Desktop 2' },
+                            { id: '3', imageUrl: '/banners/desktop3.png', altText: 'Banner Desktop 3' },
+                        ]}
                         />
+                    </div>
+
+                    {/* Banners para mobile */}
+                    <div className="block md:hidden">
+                        <BannerCarousel
+                        banners={[
+                            { id: '1', imageUrl: '/banners/mobile1.png', altText: 'Banner Mobile 1' },
+                            { id: '2', imageUrl: '/banners/mobile2.png', altText: 'Banner Mobile 2' },
+                            { id: '3', imageUrl: '/banners/mobile3.png', altText: 'Banner Mobile 3' },
+                        ]}
+                        />
+                    </div>
                     </section>
+
 
                     {loading ? (
                         <p>Loading...</p>
