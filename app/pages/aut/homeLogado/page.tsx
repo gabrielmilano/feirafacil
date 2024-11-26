@@ -60,7 +60,7 @@ function Home() {
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/watch?v=arxlQTqLURg"  // Substitua pelo link do vídeo
+              src="https://www.youtube.com/embed/arxlQTqLURg"  // Substitua pelo link do vídeo
               title="Vídeo explicativo"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
