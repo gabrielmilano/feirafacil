@@ -150,9 +150,5 @@ export default function Home() {
                             </Link>
                         </div>
                     </section>
-                </div>
-            </div>
-            <footer/>
-        </div>
-    );
-}
+
+                    <Footer />
