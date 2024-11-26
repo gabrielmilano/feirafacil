@@ -131,7 +131,7 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
           </button>
           <button
             onClick={handleSubmit}
-            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+            className="bg-gray,0-500 text-white px-4 py-2 rounded hover:bg-gray-600"
           >
             Adicionar
           </button>
