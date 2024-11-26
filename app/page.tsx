@@ -89,7 +89,7 @@ export default function Home() {
                             <h2 className="text-2xl font-semibold mb-4">Próximas Feiras</h2>
                             {feiras.map((feira, index) => (
                                 <div key={feira.id} className="mb-6 bg-white p-4 rounded shadow">
-                                    <h3 className="text-xl font-bold text-blue-700">{feira.nome}</h3>
+                                    <h3 className="text-xl font-bold text-gray-700">{feira.nome}</h3>
                                     <p className="text-gray-700">{feira.descricao}</p>
                                     <h4 className="text-lg font-semibold mt-4">Próximos Eventos:</h4>
                                     {eventos[index]?.length ? (

@@ -11,18 +11,18 @@ function Home() {
 
         <div className="flex space-x-4">
           <Link href="/pages/aut/feirantes">
-            <button className="bg-blue-500 text-white px-8 py-5 rounded hover:bg-blue-600">
+            <button className="bg-gray-500 text-white px-8 py-5 rounded hover:bg-gray-600">
               Feirantes
             </button>
           </Link>
 
           <Link href="/pages/aut/feiras">
-            <button className="bg-blue-500 text-white px-8 py-5 rounded hover:bg-blue-600">
+            <button className="bg-gray-500 text-white px-8 py-5 rounded hover:bg-gray-600">
               Feiras
             </button>
           </Link>
           <Link href="/pages/aut/eventos">
-            <button className="bg-blue-500 text-white px-8 py-5 rounded hover:bg-blue-600">
+            <button className="bg-gray-500 text-white px-8 py-5 rounded hover:bg-gray-600">
               Eventos
             </button>
           </Link>
