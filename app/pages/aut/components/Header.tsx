@@ -9,13 +9,13 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gray-600 text-white p-4">
+    <header className="bg-gray-600 p-4">
       <nav className="flex justify-between items-center">
         <ul className="flex space-x-4">
-          <li><Link href="/pages/aut/homeLogado">Home</Link></li>
-          <li><Link href="/pages/aut/feiras">Feiras</Link></li>
-          <li><Link href="/pages/aut/feirantes">Feirantes</Link></li>
-          <li><Link href="/pages/aut/eventos">Eventos</Link></li>
+          <li><Link href="/pages/aut/homeLogado" className="text-white">Home</Link></li>
+          <li><Link href="/pages/aut/feiras" className="text-white">Feiras</Link></li>
+          <li><Link href="/pages/aut/feirantes" className="text-white">Feirantes</Link></li>
+          <li><Link href="/pages/aut/eventos" className="text-white">Eventos</Link></li>
         </ul>
         <button 
           onClick={handleLogout}
