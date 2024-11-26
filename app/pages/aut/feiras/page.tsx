@@ -96,7 +96,7 @@ const FeirasPage = () => {
                         setEditingFeira(null);
                         setIsModalOpen(true);
                     }}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-auto"
+                    className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 w-auto"
                 >
                     Adicionar Feira
                 </button>
