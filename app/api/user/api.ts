@@ -14,6 +14,11 @@ export interface Evento {
     data: Date;
 }
 
+export interface Feirante {
+    id: number;
+    nomeFeirante: string;
+}
+
 interface ApiResponse<T> { 
     success: boolean;
     message: string;
@@ -74,4 +79,26 @@ export const fetchPublicEventosByFeiraId = async (feiraId: number): Promise<Even
     }
 };
 
-// Certifique-se de que você está exportando as funções corretamente
+
+
+export const fetchFeirantes = async (): Promise<Feirante[]> => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/feirantes`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        const data: ApiResponse<Feirante> = await response.json();
+
+        if (!data.success) {
+            throw new Error(`Erro ao buscar feirantes: ${data.message}`);
+        }
+
+        return data.content;
+    } catch (error) {
+        console.error(`Erro ao buscar feirantes:`, error);
+        throw error;
+    }
+};
