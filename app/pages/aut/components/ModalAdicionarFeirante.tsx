@@ -32,11 +32,10 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
         }
     };
 
-  
     if (isOpen) {
         fetchData();
     }
-}, [isOpen]);
+  }, [isOpen]);
 
   const handleClose = () => {
     setNomeFeirante('');

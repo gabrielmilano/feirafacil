@@ -52,11 +52,11 @@ export const updateFeira = async (
       const updatedFeira = await authenticatedFetch(`/feiras/feira`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json', // Adicionado para garantir o tipo correto
+          'Content-Type': 'application/json', 
         },
         body: JSON.stringify({
-          id, // Inclui o id como parte do payload
-          ...updatedData, // Inclui os outros campos
+          id, 
+          ...updatedData, 
         }),
       });
       return updatedFeira;

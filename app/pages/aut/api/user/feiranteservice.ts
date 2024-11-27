@@ -47,3 +47,48 @@ export const fetchFeirantes = async () => {
         return []; 
     }
 };
+
+export const deleteFeirante = async (id: number) => {
+    try {
+        await authenticatedFetch(`/feirantes/feirante/${id}`, {
+            method: 'DELETE',
+        });
+    } catch (error) {
+        console.error('Erro ao excluir o feirante:', error);
+        throw error;
+    }
+};
+
+export const updateFeirante = async (
+    feiranteId: number,
+    updatedFeirante: {
+      nomeFeirante: string;
+      nomeEmpresa: string;
+      cnpj: string;
+      telefone: string;
+      email: string;
+      feiraId: number;
+    }
+  ) => {
+    try {
+      const response = await authenticatedFetch(`/feirantes/${feiranteId}`, {
+        method: 'PUT',
+        body: JSON.stringify(updatedFeirante),
+      });
+      return response; 
+    } catch (error: unknown) {
+      console.error('Erro ao atualizar feirante:', error);
+  
+      if (error instanceof Error) {
+        const errorMessage = error.message || 'Erro desconhecido ao atualizar feirante.';
+        if (errorMessage.includes('Validation failed')) {
+          throw new Error('CNPJ inválido: Verifique o número e tente novamente.');
+        }
+        throw new Error(errorMessage); 
+      }
+  
+     
+      throw new Error('Erro desconhecido ao atualizar feirante.');
+    }
+  };
+  
