@@ -71,29 +71,31 @@ export const updateFeirante = async (
     }
   ) => {
     try {
-      
+
       const response = await authenticatedFetch(`/feirantes/feirante`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json', 
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: feiranteId, 
-          ...updatedFeirante, 
+          id: feiranteId,
+          ...updatedFeirante,
         }),
       });
   
-      if (!response.ok) {
-        const errorData = await response.json(); 
-        const errorMessage = errorData.message || 'Erro ao atualizar feirante.';
-        if (errorMessage.includes('Validation failed')) {
-          throw new Error('CNPJ inválido: Verifique o número e tente novamente.');
+      if (response && typeof response.json === 'function') {
+        if (!response.ok) {
+          const errorData = await response.json();
+          const errorMessage = errorData.message || 'Erro ao atualizar feirante.';
+          if (errorMessage.includes('Validation failed')) {
+            throw new Error('CNPJ inválido: Verifique o número e tente novamente.');
+          }
+          throw new Error(errorMessage);
         }
-        throw new Error(errorMessage);
+        return await response.json(); 
+      } else {
+        throw new Error('Resposta inválida da API.');
       }
-  
-      const updatedData = await response.json();
-      return updatedData;
     } catch (error: unknown) {
       console.error('Erro ao atualizar feirante:', error);
   
