@@ -60,14 +60,15 @@ const FeirantesPage = () => {
   const handleModalSubmit = async (data: Omit<Feirante, 'id'>) => {
     if (editingFeirante) {
       await updateFeirante(editingFeirante.id, data);
-      fetchData()
       setFeirantesData((prevData) =>
         prevData.map((feirante) =>
           feirante.id === editingFeirante.id ? { ...feirante, ...data } : feirante
         )
+      
       );
     } else {
-      await handleAddFeirante(data);
+      await handleAddFeirante(data)
+      fetchData();
     }
     setIsModalOpen(false);
     setEditingFeirante(null); 
