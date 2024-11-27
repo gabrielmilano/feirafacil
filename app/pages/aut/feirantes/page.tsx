@@ -68,8 +68,8 @@ const FeirantesPage = () => {
       );
     } else {
       await handleAddFeirante(data)
-      fetchData();
     }
+    fetchData();
     setIsModalOpen(false);
     setEditingFeirante(null); 
   };
