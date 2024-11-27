@@ -20,24 +20,24 @@ const FeirantesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const feirantes = await fetchFeirantes();
-        setFeirantesData(feirantes);
-      } catch (error) {
-        console.error('Erro ao buscar feirantes:', error);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const feirantes = await fetchFeirantes();
+      setFeirantesData(feirantes);
+    } catch (error) {
+      console.error('Erro ao buscar feirantes:', error);
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchData(); // Chamada inicial para carregar os dados
   }, []);
 
   const handleAddFeirante = async (feirante: Omit<Feirante, 'id'>) => {
     try {
-      const newFeirante = await addFeirante(feirante);
-      setFeirantesData((prevFeirantes) => [...prevFeirantes, newFeirante]);
+      await addFeirante(feirante);
       setErrorMessage(''); // Limpa mensagem de erro ao adicionar com sucesso
+      fetchData(); // Refetch para garantir que a lista está atualizada
     } catch (error) {
       if (error instanceof Error) {
         setErrorMessage(error.message); // Define a mensagem de erro para exibir
