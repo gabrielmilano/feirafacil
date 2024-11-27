@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchFeiras } from '../api/user/feiraservice';
+
+interface Feira {
+  id: number;
+  nome: string;
+}
 
 interface ModalAdicionarFeiranteProps {
   isOpen: boolean;
@@ -12,45 +18,57 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
   const [cnpj, setCnpj] = useState('');
   const [telefone, setTelefone] = useState('');
   const [email, setEmail] = useState('');
-  const [feiraId, setFeiraId] = useState(0);
+  const [feiraId, setFeiraId] = useState<number | null>(null);
+  const [feiras, setFeiras] = useState<Feira[]>([]); 
   const [error, setError] = useState('');
 
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const feirasData = await fetchFeiras();
+            setFeiras(feirasData);
+        } catch (error) {
+            console.error('Erro ao buscar feiras:', error);
+        }
+    };
+
+  
+    if (isOpen) {
+        fetchData();
+    }
+}, [isOpen]);
+
   const handleClose = () => {
-    // Limpa os campos e o erro ao fechar o modal
     setNomeFeirante('');
     setNomeEmpresa('');
     setCnpj('');
     setTelefone('');
     setEmail('');
-    setFeiraId(0);
-    setError(''); // Limpa a mensagem de erro
+    setFeiraId(null);
+    setError('');
     onClose();
   };
 
   const isCNPJValid = (cnpj: string) => {
-    cnpj = cnpj.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+    cnpj = cnpj.replace(/[^\d]+/g, '');
     if (cnpj.length !== 14) return false;
-
-    // Aqui você pode adicionar uma validação mais robusta, se necessário
     return true;
   };
 
   const handleSubmit = () => {
-    if (!nomeFeirante || !nomeEmpresa || !cnpj || !telefone || !email || !feiraId) {
-      setError('Por favor, preencha todos os campos.'); // Usa setError em vez de alert
+    if (!nomeFeirante || !nomeEmpresa || !cnpj || !telefone || !email || feiraId === null) {
+      setError('Por favor, preencha todos os campos.');
       return;
     }
 
-    // Validação do CNPJ
     if (!isCNPJValid(cnpj)) {
-      setError('O CNPJ informado é inválido. Por favor, verifique e tente novamente.'); // Atualiza a mensagem de erro
-      return; // Não fecha o modal
+      setError('O CNPJ informado é inválido. Por favor, verifique e tente novamente.');
+      return;
     }
 
-    // Limpa a mensagem de erro antes de enviar
     setError('');
     onSubmit({ nomeFeirante, nomeEmpresa, cnpj, telefone, email, feiraId });
-    handleClose(); // Fecha o modal apenas se a submissão foi bem-sucedida
+    handleClose();
   };
 
   if (!isOpen) return null;
@@ -59,8 +77,8 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded shadow-lg max-w-md w-full">
         <h2 className="text-xl font-bold mb-4">Adicionar Feirante</h2>
-        
-        {error && <p className="text-red-600 mb-4">{error}</p>} {/* Exibição de erros */}
+
+        {error && <p className="text-red-600 mb-4">{error}</p>}
 
         <div className="mb-4">
           <label className="block text-gray-700">Nome do Feirante</label>
@@ -71,7 +89,7 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
             onChange={(e) => setNomeFeirante(e.target.value)}
           />
         </div>
-        
+
         <div className="mb-4">
           <label className="block text-gray-700">Nome da Empresa</label>
           <input
@@ -81,7 +99,7 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
             onChange={(e) => setNomeEmpresa(e.target.value)}
           />
         </div>
-        
+
         <div className="mb-4">
           <label className="block text-gray-700">CNPJ</label>
           <input
@@ -91,7 +109,7 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
             onChange={(e) => setCnpj(e.target.value)}
           />
         </div>
-        
+
         <div className="mb-4">
           <label className="block text-gray-700">Telefone</label>
           <input
@@ -113,15 +131,23 @@ const ModalAdicionarFeirante: React.FC<ModalAdicionarFeiranteProps> = ({ isOpen,
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700">Feira ID</label>
-          <input
-            type="number"
+          <label className="block text-gray-700">Selecione a Feira</label>
+          <select
             className="w-full px-4 py-2 border rounded"
-            value={feiraId}
+            value={feiraId || ''}
             onChange={(e) => setFeiraId(Number(e.target.value))}
-          />
+          >
+            <option value="" disabled>
+              Selecione uma feira
+            </option>
+            {feiras.map((feira) => (
+              <option key={feira.id} value={feira.id}>
+                {feira.nome}
+              </option>
+            ))}
+          </select>
         </div>
-        
+
         <div className="flex justify-end space-x-4">
           <button
             onClick={handleClose}

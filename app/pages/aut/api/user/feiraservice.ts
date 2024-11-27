@@ -1,15 +1,20 @@
 import { authenticatedFetch } from './apiService';
 
 export const fetchFeiras = async () => {
-    try {
-        const data = await authenticatedFetch('/feiras');
-        return data.content || [];
-    } catch (error) {
-        console.error('Erro ao buscar as feiras:', error);
-        return []; 
-    }
+  try {
+      const response = await authenticatedFetch('/feiras');
+      
+      if (!response || !response.content) {
+          console.warn('Nenhuma feira encontrada ou formato inesperado na resposta');
+          return [];
+      }
+      
+      return response.content;
+  } catch (error) {
+      console.error('Erro ao buscar as feiras:', error);
+      return []; 
+  }
 };
-
 export const addFeira = async (feira: { nome: string; local: string; descricao: string }) => {
     try {
         const newFeira = await authenticatedFetch('/feiras', {

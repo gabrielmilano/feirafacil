@@ -61,7 +61,7 @@ const EventosPage = () => {
                 const newEvento = await addEvento({ data, feiraId: selectedFeira.id });
                 
                 const eventoFormatado = {
-                    id: newEvento.id, // O ID retornado pela API deve ser usado aqui
+                    id: newEvento.id, 
                     data: new Date(newEvento.data), 
                     feiraId: selectedFeira.id
                 };
@@ -81,7 +81,7 @@ const EventosPage = () => {
         if (!confirmDelete) return;
 
         try {
-            await deleteEvento(selectedFeira.id, eventoId); // Passando o ID da feira corretamente
+            await deleteEvento(selectedFeira.id, eventoId); 
             setEventosData((prevEventos) => prevEventos.filter((evento) => evento.id !== eventoId));
         } catch (error) {
             console.error('Erro ao excluir o evento:', error);
