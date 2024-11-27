@@ -54,25 +54,23 @@ const FeirantesPage = () => {
     if (feiranteToEdit) {
       setEditingFeirante(feiranteToEdit);
       setIsModalOpen(true);
-      fetchData();
     }
   };
 
   const handleModalSubmit = async (data: Omit<Feirante, 'id'>) => {
     if (editingFeirante) {
-      // Atualiza o feirante existente
       await updateFeirante(editingFeirante.id, data);
+      fetchData()
       setFeirantesData((prevData) =>
         prevData.map((feirante) =>
           feirante.id === editingFeirante.id ? { ...feirante, ...data } : feirante
         )
       );
     } else {
-      // Adiciona um novo feirante
       await handleAddFeirante(data);
     }
     setIsModalOpen(false);
-    setEditingFeirante(null); // Reseta o feirante em edição
+    setEditingFeirante(null); 
   };
 
   const handleDelete = async (id: number) => {
