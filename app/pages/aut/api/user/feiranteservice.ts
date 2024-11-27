@@ -41,7 +41,7 @@ export const fetchFeirantes = async () => {
         const response = await authenticatedFetch('/feirantes', {
             method: 'GET',
         });
-        return response.content || []; // Certifique-se de que a estrutura corresponde à resposta real
+        return response.content || []; 
     } catch (error) {
         console.error('Erro ao buscar feirantes:', error);
         return []; 
@@ -71,24 +71,39 @@ export const updateFeirante = async (
     }
   ) => {
     try {
-      const response = await authenticatedFetch(`/feirantes/${feiranteId}`, {
+      
+      const response = await authenticatedFetch(`/feirantes/feirante`, {
         method: 'PUT',
-        body: JSON.stringify(updatedFeirante),
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify({
+          id: feiranteId, 
+          ...updatedFeirante, 
+        }),
       });
-      return response; 
+  
+      if (!response.ok) {
+        const errorData = await response.json(); 
+        const errorMessage = errorData.message || 'Erro ao atualizar feirante.';
+        if (errorMessage.includes('Validation failed')) {
+          throw new Error('CNPJ inválido: Verifique o número e tente novamente.');
+        }
+        throw new Error(errorMessage);
+      }
+  
+      const updatedData = await response.json();
+      return updatedData;
     } catch (error: unknown) {
       console.error('Erro ao atualizar feirante:', error);
   
       if (error instanceof Error) {
         const errorMessage = error.message || 'Erro desconhecido ao atualizar feirante.';
-        if (errorMessage.includes('Validation failed')) {
-          throw new Error('CNPJ inválido: Verifique o número e tente novamente.');
-        }
-        throw new Error(errorMessage); 
+        throw new Error(errorMessage);
       }
   
-     
       throw new Error('Erro desconhecido ao atualizar feirante.');
     }
   };
+  
   
