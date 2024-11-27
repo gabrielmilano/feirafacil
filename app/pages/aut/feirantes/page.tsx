@@ -54,6 +54,7 @@ const FeirantesPage = () => {
     if (feiranteToEdit) {
       setEditingFeirante(feiranteToEdit);
       setIsModalOpen(true);
+      fetchData();
     }
   };
 
