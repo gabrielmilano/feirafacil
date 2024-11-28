@@ -35,9 +35,11 @@ const ModalAdicionarEvento: React.FC<ModalAdicionarEventoProps> = ({ isOpen, onC
                     <input
                         type="date"
                         className="w-full px-4 py-2 border rounded"
+                        min={new Date().toISOString().split('T')[0]} 
                         onChange={(e) => setData(new Date(e.target.value))}
                     />
                 </div>
+
 
                 <div className="flex justify-end space-x-4">
                     <button
