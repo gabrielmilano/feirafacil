@@ -18,9 +18,10 @@ interface Feirante {
 const FeirantesPage = () => {
   const [feirantesData, setFeirantesData] = useState<Feirante[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingFeirante, setEditingFeirante] = useState<Feirante | null>(null); // Estado para feirante em edição
+  const [editingFeirante, setEditingFeirante] = useState<Feirante | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
 
+  // Carrega os dados dos feirantes
   const fetchData = async () => {
     try {
       const feirantes = await fetchFeirantes();
@@ -37,14 +38,10 @@ const FeirantesPage = () => {
   const handleAddFeirante = async (feirante: Omit<Feirante, 'id'>) => {
     try {
       await addFeirante(feirante);
-      setErrorMessage(''); // Limpa mensagem de erro ao adicionar com sucesso
-      fetchData(); // Refetch para garantir que a lista está atualizada
+      setErrorMessage('');
+      await fetchData(); // Atualiza os dados após adicionar
     } catch (error) {
-      if (error instanceof Error) {
-        setErrorMessage(error.message); // Define a mensagem de erro para exibir
-      } else {
-        setErrorMessage('Erro ao adicionar feirante.'); // Mensagem padrão para erros não esperados
-      }
+      setErrorMessage(error instanceof Error ? error.message : 'Erro ao adicionar feirante.');
       console.error('Erro ao adicionar feirante:', error);
     }
   };
@@ -58,20 +55,19 @@ const FeirantesPage = () => {
   };
 
   const handleModalSubmit = async (data: Omit<Feirante, 'id'>) => {
-    if (editingFeirante) {
-      await updateFeirante(editingFeirante.id, data);
-      setFeirantesData((prevData) =>
-        prevData.map((feirante) =>
-          feirante.id === editingFeirante.id ? { ...feirante, ...data } : feirante
-        )
-      
-      );
-    } else {
-      await handleAddFeirante(data)
+    try {
+      if (editingFeirante) {
+        await updateFeirante(editingFeirante.id, data);
+      } else {
+        await handleAddFeirante(data);
+      }
+      await fetchData(); // Atualiza os dados após edição ou adição
+    } catch (error) {
+      console.error('Erro ao enviar dados:', error);
+    } finally {
+      setIsModalOpen(false);
+      setEditingFeirante(null);
     }
-    fetchData();
-    setIsModalOpen(false);
-    setEditingFeirante(null); 
   };
 
   const handleDelete = async (id: number) => {
@@ -79,10 +75,10 @@ const FeirantesPage = () => {
     if (!confirmDelete) return;
 
     try {
-        await deleteFeirante(id);
-        setFeirantesData((prevFeirantes) => prevFeirantes.filter((feirante) => feirante.id !== id));
+      await deleteFeirante(id);
+      await fetchData(); // Atualiza os dados após exclusão
     } catch (error) {
-        console.error('Erro ao excluir feirante:', error);
+      console.error('Erro ao excluir feirante:', error);
     }
   };
 
@@ -106,7 +102,7 @@ const FeirantesPage = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleModalSubmit}
-        feirante={editingFeirante ? { ...editingFeirante } : undefined} // Passa os dados corretamente para edição
+        feirante={editingFeirante ? { ...editingFeirante } : undefined}
       />
 
       <section className="mb-8">
