@@ -22,6 +22,7 @@ export default function Home() {
     const [eventos, setEventos] = useState<Evento[][]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const router = useRouter();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -109,13 +110,17 @@ export default function Home() {
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold mb-4">Próximas Feiras</h2>
                             {feiras.map((feira, index) => (
-                                <div key={feira.id} className="mb-6 bg-white p-4 rounded shadow">
+                                <div 
+                                    key={feira.id} 
+                                    className="mb-6 bg-white p-4 rounded shadow cursor-pointer hover:bg-gray-100"
+                                    onClick={() => router.push(`/feiras/${feira.id}`)}
+                                >
                                     <h3 className="text-xl font-bold text-gray-700">{feira.nome}</h3>
                                     <p className="text-gray-700">{feira.descricao}</p>
                                     <h4 className="text-lg font-semibold mt-4">Próximos Eventos:</h4>
                                     {eventos[index]?.length ? (
                                         eventos[index]
-                                            .filter(evento => new Date(evento.data) >= new Date()) // Filtra eventos passados
+                                            .filter(evento => new Date(evento.data) >= new Date())
                                             .map(evento => (
                                                 <p key={evento.id} className="text-gray-600">{new Date(evento.data).toLocaleDateString()}</p>
                                             ))
