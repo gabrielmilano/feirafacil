@@ -1,13 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation'; 
 import { fetchPublicFeiras } from '../../api/user/api';
 import { Feira } from '../../api/user/api';
 
 const FeiraDetail = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  const { id } = useParams(); 
   const [feira, setFeira] = useState<Feira | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
