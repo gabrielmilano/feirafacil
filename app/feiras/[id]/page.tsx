@@ -44,7 +44,6 @@ const FeiraDetail = () => {
       <h1 className="text-3xl font-bold">{feira.nome}</h1>
       <p className="mt-4">{feira.descricao}</p>
       <p className="mt-2">Local: {feira.local}</p>
-      <p className="mt-2">Data: {new Date(feira.data).toLocaleDateString()}</p>
     </div>
   );
 };
