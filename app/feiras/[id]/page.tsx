@@ -1,39 +1,53 @@
-// app/feiras/[id]/page.tsx
+'use client';
 
-import { fetchPublicFeiras, Feira } from '@/app/api/user/api';
-import { notFound } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { fetchPublicFeiras } from '../../api/user/api';
+import { Feira } from '../../api/user/api';
 
-interface FeiraPageProps {
-    params: {
-        id: string;
+const FeiraDetail = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [feira, setFeira] = useState<Feira | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchFeiraData = async () => {
+      setLoading(true);
+      try {
+        const feiras = await fetchPublicFeiras();
+        const selectedFeira = feiras.find((f) => f.id === Number(id));
+        if (selectedFeira) {
+          setFeira(selectedFeira);
+        } else {
+          setError('Feira não encontrada.');
+        }
+      } catch (err) {
+        console.error('Erro ao buscar feira:', err);
+        setError('Erro ao buscar feira. Tente novamente mais tarde.');
+      } finally {
+        setLoading(false);
+      }
     };
-}
 
-export async function getStaticProps({ params }: FeiraPageProps) {
-    const feiras = await fetchPublicFeiras();
-    const feira = feiras.find((f) => f.id === parseInt(params.id, 10));
+    fetchFeiraData();
+  }, [id]);
 
-    if (!feira) {
-        notFound();
-    }
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>{error}</p>;
+  if (!feira) return <p>Feira não encontrada.</p>;
 
-    return {
-        props: { feira },
-    };
-}
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold">{feira.nome}</h1>
+      <p className="mt-4">{feira.descricao}</p>
+      <p className="mt-2">Local: {feira.local}</p>
+      <p className="mt-2">Data: {new Date(feira.data).toLocaleDateString()}</p>
+    </div>
+  );
+};
 
-export default function FeiraPage({ feira }: { feira: Feira }) {
-    return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-4">{feira.nome}</h1>
-            <p className="text-lg text-gray-700 mb-4">{feira.descricao}</p>
-            <p className="text-gray-600">Local: {feira.local}</p>
-            <p className="text-gray-600">Data: {new Date(feira.data).toLocaleDateString()}</p>
-            <img
-                src={`/images/${feira.imagemId}.jpg`}
-                alt={`Imagem da feira ${feira.nome}`}
-                className="mt-4 max-w-full rounded"
-            />
-        </div>
-    );
-}
+export default FeiraDetail;
