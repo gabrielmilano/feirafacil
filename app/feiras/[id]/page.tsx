@@ -13,6 +13,7 @@ interface Feirante {
   nomeEmpresa: string;
   telefone: string;
   email: string;
+  feiraId: number; // Adicionei feiraId para tipagem completa
 }
 
 interface Evento {
@@ -41,7 +42,7 @@ const FeiraDetail = () => {
 
           // Fetch feirantes relacionados à feira
           const feirantesData = await fetchFeirantes();
-          setFeirantes(feirantesData.filter((feirante) => feirante.feiraId === Number(id)));
+          setFeirantes(feirantesData.filter((feirante: Feirante) => feirante.feiraId === Number(id)));
 
           // Fetch eventos relacionados à feira
           const eventosData = await fetchEventos(Number(id));
@@ -75,15 +76,15 @@ const FeiraDetail = () => {
         {feirantes.length > 0 ? (
           <ul className="mt-4">
             {feirantes.map((feirante: Feirante) => (
-                <li key={feirante.id} className="mb-2">
-                    <p>
-                    <strong>Nome:</strong> {feirante.nomeFeirante} ({feirante.nomeEmpresa})
-                    </p>
-                    <p>
-                    <strong>Telefone:</strong> {feirante.telefone} | <strong>Email:</strong> {feirante.email}
-                    </p>
-                </li>
-                ))}
+              <li key={feirante.id} className="mb-2">
+                <p>
+                  <strong>Nome:</strong> {feirante.nomeFeirante} ({feirante.nomeEmpresa})
+                </p>
+                <p>
+                  <strong>Telefone:</strong> {feirante.telefone} | <strong>Email:</strong> {feirante.email}
+                </p>
+              </li>
+            ))}
           </ul>
         ) : (
           <p>Nenhum feirante cadastrado.</p>
