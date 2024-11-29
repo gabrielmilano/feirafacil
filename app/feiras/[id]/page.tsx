@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { fetchPublicFeiras } from '../../api/user/api';
 import { Feira } from '../../api/user/api';
 
