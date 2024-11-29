@@ -2,6 +2,8 @@
 
 Bem-vindo ao projeto de **Sistema de Feiras de Comércio Justo**, uma plataforma web desenvolvida para conectar produtores rurais locais com consumidores. Este projeto foi desenvolvido como parte das atividades acadêmicas do curso.
 
+https://www.canva.com/design/DAGXyi1CMXE/rvf6nxG7ukGwro9Yk-97dA/edit?utm_content=DAGXyi1CMXE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 ## Equipe
 
 - Gabriel Guzzatti: Frontend
