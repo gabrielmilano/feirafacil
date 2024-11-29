@@ -8,6 +8,8 @@ import BannerCarousel from './components/BannerCarousel';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Feira, Evento } from './api/user/api';
+import { useRouter } from 'next/navigation';
+
 
 const reviews = [
     { id: '1', name: 'Ana Souza', rating: 5, comment: 'Ótima experiência! A feira tem uma variedade incrível de produtos locais.' },
