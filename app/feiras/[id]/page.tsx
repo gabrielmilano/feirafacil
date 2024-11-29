@@ -74,17 +74,16 @@ const FeiraDetail = () => {
         <h2 className="text-2xl font-semibold">Feirantes</h2>
         {feirantes.length > 0 ? (
           <ul className="mt-4">
-            {feirantes.map((feirante) => (
-              <li key={feirante.id} className="mb-2">
-                <p>
-                  <strong>Nome:</strong> {feirante.nomeFeirante} ({feirante.nomeEmpresa})
-                </p>
-                <p>
-                  <strong>Telefone:</strong> {feirante.telefone} | <strong>Email:</strong>{' '}
-                  {feirante.email}
-                </p>
-              </li>
-            ))}
+            {feirantes.map((feirante: Feirante) => (
+                <li key={feirante.id} className="mb-2">
+                    <p>
+                    <strong>Nome:</strong> {feirante.nomeFeirante} ({feirante.nomeEmpresa})
+                    </p>
+                    <p>
+                    <strong>Telefone:</strong> {feirante.telefone} | <strong>Email:</strong> {feirante.email}
+                    </p>
+                </li>
+                ))}
           </ul>
         ) : (
           <p>Nenhum feirante cadastrado.</p>
