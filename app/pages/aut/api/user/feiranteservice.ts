@@ -4,6 +4,7 @@ import { authenticatedFetch } from './apiService';
 
 // Adiciona um novo feirante
 export const addFeirante = async (feirante: {
+    id: number;
     nomeFeirante: string;
     nomeEmpresa: string;
     cnpj: string;
